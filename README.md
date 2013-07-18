@@ -29,11 +29,12 @@ Download the [production version][min] or the [development version][max].
 In your web page:
 
 ```html
+<!-- NOTE: by not setting an exports var in the window context, core will create the lib within window.core -->
 <script src="dist/core.min.js"></script>
 <script>
 // "get the english ordinal for a number"
 var num = prompt('what number?'),
-    ord = ord(num);
+    ord = core.ord(num);
     alert('your number is the '+num+ord);
 // out is now 'your number is the 345th';
 </script>

@@ -1,37 +1,41 @@
-'use strict';
+/*jslint jquery:true*/
+/*global test,module,equal,core*/
+(function($) {
+  'use strict';
+  
+  /*
+    ======== A Handy Little QUnit Reference ========
+    http://api.qunitjs.com/
 
-var core = require('../lib/core.js');
+    Test methods:
+      module(name, {[setup][ ,teardown]})
+      test(name, callback)
+      expect(numberOfAssertions)
+      stop(increment)
+      start(decrement)
+    Test assertions:
+      ok(value, [message])
+      equal(actual, expected, [message])
+      notEqual(actual, expected, [message])
+      deepEqual(actual, expected, [message])
+      notDeepEqual(actual, expected, [message])
+      strictEqual(actual, expected, [message])
+      notStrictEqual(actual, expected, [message])
+      throws(block, [expected], [message])
+  */
 
-/*
-  ======== A Handy Little Nodeunit Reference ========
-  https://github.com/caolan/nodeunit
+  module('jQuery#core', {
+    // This will run before each test in this module.
+    setup: function() {
+      this.elems = $('#qunit-fixture').children();
+    }
+  });
 
-  Test methods:
-    test.expect(numAssertions)
-    test.done()
-  Test assertions:
-    test.ok(value, [message])
-    test.equal(actual, expected, [message])
-    test.notEqual(actual, expected, [message])
-    test.deepEqual(actual, expected, [message])
-    test.notDeepEqual(actual, expected, [message])
-    test.strictEqual(actual, expected, [message])
-    test.notStrictEqual(actual, expected, [message])
-    test.throws(block, [error], [message])
-    test.doesNotThrow(block, [error], [message])
-    test.ifError(value)
-*/
-
-exports['core'] = {
-  setUp: function(done) {
-    // setup here
-    done();
-  },
-  'no args': function(test) {
+  test('ord', function() {
     var i,str,ones,tens,ord;
-    // test.expect(4);
+    // expect(4);
     
-    test.equal(core.ord(3), 'rd', 'should be rd.');
+    equal(core.ord(3), 'rd', 'should be rd.');
     for(i=1;i<120;i++){
       str = i.toString();
       ones = str.slice(-1);
@@ -46,9 +50,9 @@ exports['core'] = {
       if(ones==='3' && tens!=='1'){
         ord = 'rd';
       }
-      test.equal(core.ord(i), ord, 'for '+i+', ones is '+ones+' and tens is '+tens+' so the ord is '+ord+'.');
+      equal(core.ord(i), ord, 'for '+i+', ones is '+ones+' and tens is '+tens+' so the ord is '+ord+'.');
       
     }
-    test.done();
-  }
-};
+  });
+
+}(jQuery));
