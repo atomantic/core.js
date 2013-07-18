@@ -12,7 +12,12 @@ Install the module with: `npm install core`
 
 ```javascript
 var core = require('core');
-core.ord(); // "get the english ordinal for a number"
+
+// "get the english ordinal for a number"
+var num = 345,
+    ord = core.ord(num),
+    out = 'your number is the '+num+ord;
+// out is now 'your number is the 345th';
 ```
 
 ### In the browser
@@ -26,7 +31,11 @@ In your web page:
 ```html
 <script src="dist/core.min.js"></script>
 <script>
-ord(1); // "ordinal"
+// "get the english ordinal for a number"
+var num = prompt('what number?'),
+    ord = ord(num);
+    alert('your number is the '+num+ord);
+// out is now 'your number is the 345th';
 </script>
 ```
 
@@ -38,7 +47,11 @@ var exports = Bocoup.utils;
 </script>
 <script src="dist/core.min.js"></script>
 <script>
-Bocoup.utils.ord(); // "ordinal"
+// "get the english ordinal for a number"
+var num = 345,
+    ord = Bocoup.utils.ord(num),
+    out = 'your number is the '+num+ord;
+// out is now 'your number is the 345th';
 </script>
 ```
 
