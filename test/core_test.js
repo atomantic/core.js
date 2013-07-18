@@ -22,15 +22,33 @@ var core = require('../lib/core.js');
     test.ifError(value)
 */
 
-exports['awesome'] = {
+exports['core'] = {
   setUp: function(done) {
     // setup here
     done();
   },
   'no args': function(test) {
-    test.expect(1);
-    // tests here
-    test.equal(core.ord(1), 'st', 'should be 1st.');
+    var i,str,ones,tens,ord;
+    // test.expect(4);
+    
+    test.equal(core.ord(3), 'rd', 'should be rd.');
+    for(i=1;i<120;i++){
+      str = i.toString();
+      ones = str.slice(-1);
+      tens = str.length > 1 ? str.slice(-2).charAt(0) : 0;
+      ord = 'th';
+      if(ones==='1' && tens!=='1'){
+        ord = 'st';
+      }
+      if(ones==='2' && tens!=='1'){
+        ord = 'nd';
+      }
+      if(ones==='3' && tens!=='1'){
+        ord = 'rd';
+      }
+      test.equal(core.ord(i), ord, 'for '+i+', ones is '+ones+' and tens is '+tens+' so the ord is '+ord+'.');
+      
+    }
     test.done();
   }
 };
