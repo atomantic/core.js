@@ -11,18 +11,19 @@
   /**
    * convert a form's name/value pairs to a json object
    */
-  $.fn.formToObject = function()
-  {
+  $.fn.formToObject = function() {
       var o = {},
-          a = this.serializeArray();
+          a = this.serializeArray(),
+          name;
       $.each(a, function() {
-          if (o[this.name] !== undefined) {
-              if (!o[this.name].push) {
-                  o[this.name] = [o[this.name]];
+        name = this.name;
+          if (o[name] !== undefined) {
+              if (!o[name].push) {
+                  o[name] = [o[name]];
               }
-              o[this.name].push(this.value || '');
+              o[name].push(this.value || '');
           } else {
-              o[this.name] = this.value || '';
+              o[name] = this.value || '';
           }
       });
       return o;
