@@ -33,14 +33,15 @@
   
   test('formToObject',function(){
     var $form = $('#formToObject'),
-      formObj = $form.formToObject();
+        formObj = $form.formToObject();
+    
     deepEqual(
-      formObj,
-      {
-        someName:'someValue',
-        hiddenName:'hiddenValue'
-      },
-      'Form convert to json object'
+        formObj,
+        {
+            someName:'someValue',
+            hiddenName:'hiddenValue'
+        },
+        'Form convert to json object'
     );
   });
 

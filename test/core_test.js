@@ -1,5 +1,5 @@
 /*jslint jquery:true*/
-/*global test,module,equal,core*/
+/*global test,module,deepEqual,equal,core*/
 (function($) {
   'use strict';
   
@@ -33,7 +33,6 @@
 
   test('ord', function() {
     var i,str,ones,tens,ord;
-    // expect(4);
     
     equal(core.ord(3), 'rd', 'should be rd.');
     for(i=1;i<120;i++){
@@ -53,6 +52,38 @@
       equal(core.ord(i), ord, 'for '+i+', ones is '+ones+' and tens is '+tens+' so the ord is '+ord+'.');
       
     }
+  });
+  
+  test('fnMore',function(){
+    var fn1 = function(fnArg){
+          this.fn1Arg = fnArg;
+          this.fn1Prop = 'fn1';
+        },
+        fn2 = function(fnArg){
+          this.fn2Arg = fnArg;
+          this.fn2Prop = 'fn2';
+        },
+        obj = {
+          name:'obj'
+        },
+        fnMore = core.fnMore(fn1,fn2,obj);
+
+    deepEqual(obj,{name:'obj'},'unmutated object');
+
+    fnMore('an arg');
+
+    deepEqual(
+        obj,
+        {
+            name:'obj',
+            fn1Arg:'an arg',
+            fn1Prop:'fn1',
+            fn2Prop:'fn2',
+            fn2Arg:'an arg'
+        },
+        'mutated object'
+    );
+
   });
 
 }(jQuery));
