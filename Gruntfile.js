@@ -41,6 +41,8 @@ module.exports = function(grunt) {
     jasmine : {
       src : '<%= meta.src %>',
       options : {
+        outfile:'dist/index.html',
+        keepRunner:true,
         specs: '<%= meta.specs %>',
         vendor: ['libs/jquery/jquery.js']
       }
@@ -49,7 +51,7 @@ module.exports = function(grunt) {
       options: {
         jshintrc: '.jshintrc'
       },
-      gruntfile: {
+      gruntfile: {  
         src: 'Gruntfile.js'
       },
       src: {
