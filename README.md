@@ -1,10 +1,21 @@
-# Core.js - JS Scaffolding to Make Things Suck Less
+# Core.js - JS to Make Things Suck Less
+
+[![Build Status](https://travis-ci.org/atomantic/core.js.png?branch=master)](https://travis-ci.org/atomantic/core.js)
 
 ## About
 
-OK, let's be honest: lots of stuff about the web just blows. While I may make devil's-advocate and practical arguments against some of the points in [Zed Shaw's talk](http://vimeo.com/43380467), he still makes a lot of great points. 
+OK, let's be honest: lots of stuff about the web just blows. While I may make devil's-advocate and practical arguments against some of the complaints in [Zed Shaw's talk](http://vimeo.com/43380467), he still makes a lot of great points. 
 
-If the web really worked right, I wouldn't have to create a tool to format the Date in a sensible, readable way. I wouldn't have to provide my own ellipsis method for truncating strings, my own GUID generating function or my own method to convert a number to an ordinal string (1 => "1st"). That's the kind of BS you'll find here. If you think the web works perfect without all this sugar, go for it. You'll probably eventually write some of this over again yourself.
+If the web really worked right:
+
+* we wouldn't have to create a tool to format the date in a sensible, readable way (and there wouldn't be 30 different libraries and standard for formatting the same).
+* we wouldn't have to provide our own ellipsis method for truncating strings
+* our own GUID generating function
+* our own method to convert a number to an ordinal string (1 => "1st")
+* etc...
+
+That's the kind of BS you'll find here. 
+If you think the web works perfect without all this sugar, this isn't for you. You'll probably eventually write some of this over again yourself.
 
 ## Getting Started
 ### On the server
@@ -33,9 +44,9 @@ In your web page:
 <script src="dist/core.min.js"></script>
 <script>
 // "get the english ordinal for a number"
-var num = prompt('what number?'),
+var num = 345,
     ord = core.ord(num);
-    alert('your number is the '+num+ord);
+    out = 'your number is the '+num+ord;
 // out is now 'your number is the 345th';
 </script>
 ```
