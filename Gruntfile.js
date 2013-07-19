@@ -6,6 +6,10 @@ module.exports = function(grunt) {
   grunt.initConfig({
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
+    meta : {
+      src   : 'src/**/*.js',
+      specs : 'spec/**/*.js'
+    },
     banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
       '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
@@ -34,6 +38,13 @@ module.exports = function(grunt) {
     qunit: {
       files: ['test/**/*.html']
     },
+    jasmine : {
+      src : '<%= meta.src %>',
+      options : {
+        specs: '<%= meta.specs %>',
+        vendor: ['libs/jquery/jquery.js']
+      }
+    },
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -48,7 +59,10 @@ module.exports = function(grunt) {
         src: ['src/**/*.js']
       },
       test: {
-        src: ['test/**/*.js']
+        src: [
+            'test/**/*.js',
+            'spec/**/*.js'
+        ]
       }
     },
     watch: {
@@ -71,10 +85,17 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+  grunt.registerTask('default', [
+    'jshint', 
+    'qunit', 
+    'jasmine',
+    'concat', 
+    'uglify'
+]);
 
 };
