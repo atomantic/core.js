@@ -34,7 +34,6 @@
   test('ord', function() {
     var i,str,ones,tens,ord;
     
-    equal(core.ord(3), 'rd', 'should be rd.');
     for(i=1;i<120;i++){
       str = i.toString();
       ones = str.slice(-1);
