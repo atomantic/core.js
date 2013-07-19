@@ -1,10 +1,6 @@
-/*
- * core
- * https://github.com/atomantic/core.js
- *
- * Copyright (c) 2013 Adam Eivy (@antic)
- * Licensed under the MIT license.
- */
+/*! core - v0.1.0 - 2013-07-19
+* https://github.com/atomantic/core.js
+* Copyright (c) 2013 Adam Eivy (@antic); Licensed MIT */
 /*global exports*/
 /*jslint browser:true*/
 (function(exports) {
