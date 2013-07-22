@@ -18,7 +18,7 @@ module.exports = function(grunt) {
         stripBanners: true
       },
       dist: {
-        src: ['src/<%= pkg.name %>.js'],
+        src: ['src/*.js'],
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
@@ -51,6 +51,15 @@ module.exports = function(grunt) {
         src: ['test/**/*.js']
       }
     },
+    dox: {
+        options: {
+          title: "Core.js Documentation"
+        },
+        files: {
+          src: ['src/'],
+          dest: 'dist/docs'
+        }
+    },
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
@@ -64,6 +73,14 @@ module.exports = function(grunt) {
         files: '<%= jshint.test.src %>',
         tasks: ['jshint:test', 'qunit']
       }
+    },
+    jsdoc : {
+        dist : {
+            src: ['src/*.js'], 
+            options: {
+                destination: 'dist/docs'
+            }
+        }
     }
   });
 
@@ -73,8 +90,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  //grunt.loadNpmTasks('grunt-dox');
+  grunt.loadNpmTasks('grunt-jsdoc');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'qunit', 'jsdoc', 'concat', 'uglify']);
 
 };
