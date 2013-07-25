@@ -1,43 +1,55 @@
 /*! core - v0.1.0 - 2013-07-25
 * https://github.com/atomantic/core.js
 * Copyright (c) 2013 Adam Eivy (@antic); Licensed MIT */
-/*
- * core
+/**
+ * The jQuery plugin namespace.
+ * @external "jQuery.fn"
+ * @see {@link http://docs.jquery.com/Plugins/Authoring The jQuery Plugin Guide}
+ */
+/**
+ * core.jquery is a set of standard mini jquery plugins and extensions
+ * This set of extensions adds functionality to the jQuery.fn external library
  * 
  * @module core.jquery
+ * @memberOf "jQuery.fn"
  *
  * @copyright 2013 Adam Eivy (@antic)
  * @license MIT
  */
 (function($) {
-  
-  /**
-   * convert a form's name/value pairs to a json object
-   * @return {object} a json representation of the form
-   */
-  $.fn.formToObject = function() {
-      var o = {},
-          a = this.serializeArray(),
-          name;
-      $.each(a, function() {
-        name = this.name;
-          if (o[name] !== undefined) {
-              if (!o[name].push) {
-                  o[name] = [o[name]];
-              }
-              o[name].push(this.value || '');
-          } else {
-              o[name] = this.value || '';
-          }
-      });
-      return o;
-  };
+    /**
+     * convert a form's name/value pairs to a json object
+     * 
+     * @function external:"jQuery.fn".formToObject
+     * @example 
+     * // captures the field/value set from #myform
+     * var formData = $('#myform').formToObject();
+     * 
+     * @return {object} a json representation of the form
+     */
+    $.fn.formToObject = function() {
+       var o = {},
+           a = this.serializeArray(),
+           name;
+       $.each(a, function() {
+         name = this.name;
+           if (o[name] !== undefined) {
+               if (!o[name].push) {
+                   o[name] = [o[name]];
+               }
+               o[name].push(this.value || '');
+           } else {
+               o[name] = this.value || '';
+           }
+       });
+       return o;
+    };
 
 }(jQuery));
-
 /*jslint browser:true*/
 /**
-* Core.js tries to make the web suck less
+* Core.js tries to make the web suck less by providing a bunch of
+* tiny methods and library extensions that should be natively available.
 * 
 * @module core
 * @link https://github.com/atomantic/core.js
@@ -62,11 +74,11 @@
       return sfx[(v-20)%10] || sfx[v] || sfx[0];
   };
   /**
-   * generic empty function to speed up supplying anon empty functions
-   * could also use $.noop if returning undefined is desireable
+   * Generic empty function to speed up supplying anon empty functions.
+   * If you are using jQuery, you could use $.noop if returning undefined is desireable
    * but this one is useful for anything requiring a boolean true return
    *
-   * @return true
+   * @return {boolean} true
    */
   exports.fn = function(){return true;};
   /**
