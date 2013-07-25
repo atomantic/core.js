@@ -60,6 +60,14 @@ module.exports = function(grunt) {
           dest: 'dist/docs'
         }
     },
+    jsdoc : {
+        dist : {
+            src: ['src/*.js'], 
+            options: {
+                destination: 'dist/docs'
+            }
+        }
+    },
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
@@ -72,15 +80,11 @@ module.exports = function(grunt) {
       test: {
         files: '<%= jshint.test.src %>',
         tasks: ['jshint:test', 'qunit']
+      },
+      doc: {
+        files: '<%= jsdoc.dist.src %>',
+        tasks: ['jsdoc']
       }
-    },
-    jsdoc : {
-        dist : {
-            src: ['src/*.js'], 
-            options: {
-                destination: 'dist/docs'
-            }
-        }
     }
   });
 
@@ -94,6 +98,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jsdoc');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'qunit', 'jsdoc', 'concat', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify', 'jsdoc']);
 
 };

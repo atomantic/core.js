@@ -1,11 +1,19 @@
-/*! core - v0.1.0 - 2013-07-22
+/*! core - v0.1.0 - 2013-07-25
 * https://github.com/atomantic/core.js
 * Copyright (c) 2013 Adam Eivy (@antic); Licensed MIT */
-/*jslint jquery:true*/
+/*
+ * core
+ * 
+ * @module core.jquery
+ *
+ * @copyright 2013 Adam Eivy (@antic)
+ * @license MIT
+ */
 (function($) {
   
   /**
    * convert a form's name/value pairs to a json object
+   * @return {object} a json representation of the form
    */
   $.fn.formToObject = function() {
       var o = {},
@@ -28,16 +36,13 @@
 }(jQuery));
 
 /*jslint browser:true*/
-/*
- * core
- * https://github.com/atomantic/core.js
- *
- * Copyright (c) 2013 Adam Eivy (@antic)
- * Licensed under the MIT license.
- */
-
 /**
 * Core.js tries to make the web suck less
+* 
+* @module core
+* @link https://github.com/atomantic/core.js
+* @copyright 2013 Adam Eivy (@antic)
+* @license MIT
 *
 * @param {object} exports The scope to embed all of the core.js methods
 */
