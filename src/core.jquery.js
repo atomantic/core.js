@@ -15,6 +15,7 @@
  * @license MIT
  */
 (function($) {
+    'use strict';
     /**
      * convert a form's name/value pairs to a json object
      * 

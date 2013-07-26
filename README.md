@@ -71,7 +71,10 @@ var num = 345,
 You can view the documentation generated via grunt:jsdoc on github: [http://atomantic.github.io/core.js/docs/](http://atomantic.github.io/core.js/docs/)
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+In lieu of a formal styleguide, take care to maintain the existing coding style.
+Please note that the codebase uses 4 spaces (not 2) instead of tabs--and uses the comma pattern for declaring sets of new variables. 
+Add unit tests for any new or changed functionality. 
+Lint and test your code using [Grunt](http://gruntjs.com/).
 
 _Also, please don't edit files in the "dist" subdirectory as they are generated via Grunt. You'll find source code in the "lib" subdirectory!_
 
@@ -83,6 +86,7 @@ _Also, please don't edit files in the "dist" subdirectory as they are generated 
  * jsdoc documentation
  * qunit unit tests
  * added some basic methods: fn, eFn, fnMore, ord, $.fn.formToObject
+ * requirejs support
 
 ## License
 Copyright (c) 2013 Adam Eivy (@antic)  

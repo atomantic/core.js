@@ -1,6 +1,6 @@
-/*jslint jquery:true*/
-/*global test,module,deepEqual,equal,core*/
-(function($) {
+/*jslint jquery:true,browser:true */
+/*global test,module,deepEqual,equal,define*/
+define(['jquery','../src/core.js'], function( $ , core ) {
   'use strict';
   
   /*
@@ -24,7 +24,7 @@
       throws(block, [expected], [message])
   */
 
-  module('jQuery#core', {
+  module('Core#main', {
     // This will run before each test in this module.
     setup: function() {
       this.elems = $('#qunit-fixture').children();
@@ -85,4 +85,4 @@
 
   });
 
-}(jQuery));
+});
