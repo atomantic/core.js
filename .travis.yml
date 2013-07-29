@@ -10,7 +10,7 @@ notifications:
     irc: "irc.freenode.org#generator-travis-ci"
 branches:
     only:
-        - master
+        - dev
 env:
     global:
         # GH_OAUTH_TOKEN is the oauth token generated as described at
