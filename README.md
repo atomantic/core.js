@@ -17,6 +17,8 @@ If the web really worked right:
 That's the kind of BS you'll find here. 
 If you think the web works perfect without all this sugar, this isn't for you. You'll probably eventually write some of this over again yourself.
 
+Additionally, this library provides a selection of String methods in patient anticipation of the next ecmascript standard: http://wiki.ecmascript.org/doku.php?id=harmony%3astring_extras
+
 ## Getting Started
 ### On the server
 Install the module with: `npm install core`

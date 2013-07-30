@@ -1,6 +1,6 @@
 /*jslint jquery:true,browser:true */
 /*global test,module,deepEqual,equal,define*/
-define(['jquery','../src/core.js'], function( $ , core ) {
+define(['jquery', '../src/core.js', '../src/safe.js'], function( $ , core ) {
   'use strict';
   
   /*

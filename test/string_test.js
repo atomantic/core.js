@@ -1,6 +1,7 @@
-/*jslint jquery:true*/
-/*global test,module,deepEqual,define*/
-define(['jquery', '../src/safe.js', '../src/core.jquery.js'], function($) {
+/*jslint jquery:true,browser:true */
+/*global test,module,equal,define,ok*/
+define([ '../src/safe.js', '../src/string.startsWith.js'], function() {
+
     'use strict';
 
     /*
@@ -24,22 +25,20 @@ define(['jquery', '../src/safe.js', '../src/core.jquery.js'], function($) {
       throws(block, [expected], [message])
     */
 
-    module('jQuery#core', {
+    module('JS#string', {
         // This will run before each test in this module.
         setup: function() {
-            this.elems = $('#qunit-fixture').children();
+            //this.elems = $('#qunit-fixture').children();
         }
     });
 
-    test('formToObject', function() {
-        var $form = $('#formToObject'),
-            formObj = $form.formToObject();
-
-        deepEqual(
-        formObj, {
-            someName: 'someValue',
-            hiddenName: 'hiddenValue'
-        }, 'Form convert to json object');
+    test('startsWith', function() {
+        var str = 'teststring';
+        equal(typeof str.startsWith,'function','startsWith function has been added to String.prototype');
+        ok(str.startsWith('t'),'string starts with first letter');
+        ok(str.startsWith('te'),'string starts with first two letters');
+        ok(str.startsWith('test'),'string starts with first part');
+        ok(!str.startsWith('foobar'),'string does not start with foobar');
     });
 
 });
