@@ -1,4 +1,4 @@
-# Core.js - JS to Make Things Suck Less
+# Core.js - Everything that should be there but isn't
 
 [![Build Status](https://travis-ci.org/atomantic/core.js.png?branch=master)](https://travis-ci.org/atomantic/core.js)
 
@@ -8,10 +8,11 @@ OK, let's be honest: lots of stuff about the web just blows. While I may make de
 
 If the web really worked right:
 
+* we wouldn't have to write out ```Math.floor( Math.random() * (10-1+1) ) + 1``` in order to choose a number between 1 and 10!
 * we wouldn't have to create a tool to format the date in a sensible, readable way (and there wouldn't be 30 different libraries and standard for formatting the same).
 * we wouldn't have to provide our own ellipsis method for truncating strings
 * our own GUID generating function
-* our own method to convert a number to an ordinal string (1 => "1st")
+* our own method to get the ordinal suffix of a number (1 => "st")
 * etc...
 
 That's the kind of BS you'll find here. 
@@ -69,6 +70,9 @@ var num = 345,
 </script>
 ```
 
+## Custom Build!
+You can customize your build of core.js to only get the parts you want: [http://atomantic.github.io/core.js](http://atomantic.github.io/core.js)
+
 ## Documentation
 You can view the documentation generated via grunt:jsdoc on github: [http://atomantic.github.io/core.js/docs/](http://atomantic.github.io/core.js/docs/)
 
@@ -78,10 +82,17 @@ Please note that the codebase uses 4 spaces (not 2) instead of tabs--and uses th
 Add unit tests for any new or changed functionality. 
 Lint and test your code using [Grunt](http://gruntjs.com/).
 
-_Also, please don't edit files in the "dist" subdirectory as they are generated via Grunt. You'll find source code in the "lib" subdirectory!_
+_Also, please note that only the index.html in the "dist" subdirectory is manually edited--the rest are generated via Grunt. You'll find source code in the "src" subdirectory!_
 
 ## Release History
 
+### <sup>v0.1.1</sup>
+
+ * randRange(from,to)
+ * safe console.log
+ * String.prototype.startsWith(prefix)
+ * String.prototype.endsWith(suffix)
+ 
 ### <sup>v0.1.0</sup>
 
  * Grunt build system
