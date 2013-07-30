@@ -31,6 +31,7 @@
             v = n % 100;
         return sfx[(v - 20) % 10] || sfx[v] || sfx[0];
     };
+    
     /**
      * Generic empty function to speed up supplying anon empty functions.
      * If you are using jQuery, you could use $.noop if returning undefined is desireable
@@ -41,6 +42,7 @@
     exports.fn = function() {
         return true;
     };
+    
     /**
      * empty event handler function, which simply prevents default handling
      */
@@ -68,6 +70,18 @@
             originalFn();
             moreFn();
         };
+    };
+    
+    
+    /**
+     * get a random integer between set (including upward and lower bound)
+     * @example
+     * core.randBetween(0,5) returns 0,1,2,3,4, or 5
+     * @param {number} from The lower bound
+     * @param {number} to The upward bound
+     */
+    exports.randBetween = function(from,to){
+        return Math.floor( Math.random() * (to-from+1) ) + from;
     };
 
     // UMD support
