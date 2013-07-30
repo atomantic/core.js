@@ -13,12 +13,15 @@
   <div id="qunit-fixture">
     <span>lame test markup</span>
     <span>normal test markup</span>
-    <span>core test markup</span>
+    <form id="formToObject">
+        <input type="text" name="someName" value="someValue" />
+        <input type="hidden" name="hiddenName" value="hiddenValue" />
+    </form>
   </div>  
   <script>
   QUnit.config.autostart = false;
 
-  require(['core_test.js'], function(){
+  require(['core_test.js','core.jquery_test.js','string_test.js'], function(){
       QUnit.start(); //Tests loaded, run tests
   });
   </script>

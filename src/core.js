@@ -1,6 +1,11 @@
 /*global exports,module,define*/
 /*jslint browser:true*/
 /**
+ * The ecmascript String prototype
+ * @external String
+ * @see {@link http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.3.1 ECMASCript 5.1 String.prototype}
+ */
+/**
  * Core.js tries to make the web suck less by providing a bunch of
  * tiny methods and library extensions that should be natively available.
  *
@@ -14,6 +19,9 @@
 (function(exports) {
 
     'use strict';
+    
+    // TODO: Grunt should wrap all of these methods from split files into the outer wrapper
+    // that way, we could build a custom version without any or all of these methods
 
     /**
      * Get the english ordinal suffix for any number
@@ -26,6 +34,7 @@
             v = n % 100;
         return sfx[(v - 20) % 10] || sfx[v] || sfx[0];
     };
+    
     /**
      * Generic empty function to speed up supplying anon empty functions.
      * If you are using jQuery, you could use $.noop if returning undefined is desireable
@@ -36,6 +45,7 @@
     exports.fn = function() {
         return true;
     };
+    
     /**
      * empty event handler function, which simply prevents default handling
      */
@@ -63,6 +73,18 @@
             originalFn();
             moreFn();
         };
+    };
+    
+    
+    /**
+     * get a random integer within a range (including upward and lower bound)
+     * @example
+     * core.randRange(0,5) returns 0,1,2,3,4, or 5
+     * @param {number} from The lower bound
+     * @param {number} to The upward bound
+     */
+    exports.randRange = function(from,to){
+        return Math.floor( Math.random() * (to-from+1) ) + from;
     };
 
     // UMD support

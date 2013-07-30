@@ -1,9 +1,10 @@
-/*! core - v0.1.0 - 2013-07-26
+/*! core - v0.1.0 - 2013-07-30
 * https://github.com/atomantic/core.js
 * Copyright (c) 2013 Adam Eivy (@antic); Licensed MIT */
+/*global define*/
 /**
  * The jQuery plugin namespace.
- * @external "jQuery.fn"
+ * @external jQuery
  * @see {@link http://docs.jquery.com/Plugins/Authoring The jQuery Plugin Guide}
  */
 /**
@@ -11,43 +12,60 @@
  * This set of extensions adds functionality to the jQuery.fn external library
  * 
  * @module core.jquery
- * @memberOf "jQuery.fn"
+ * @memberOf jQuery
  *
  * @copyright 2013 Adam Eivy (@antic)
  * @license MIT
  */
-(function($) {
+ 
+(function(){
     'use strict';
-    /**
-     * convert a form's name/value pairs to a json object
-     * 
-     * @function external:"jQuery.fn".formToObject
-     * @example 
-     * // captures the field/value set from #myform
-     * var formData = $('#myform').formToObject();
-     * 
-     * @return {object} a json representation of the form
-     */
-    $.fn.formToObject = function() {
-       var o = {},
-           a = this.serializeArray(),
-           name;
-       $.each(a, function() {
-         name = this.name;
-           if (o[name] !== undefined) {
-               if (!o[name].push) {
-                   o[name] = [o[name]];
+    var plugin = function($) {
+    
+        /**
+         * convert a form's name/value pairs to a json object
+         * 
+         * @function external:jQuery.formToObject
+         * @example 
+         * // captures the field/value set from #myform
+         * var formData = $('#myform').formToObject();
+         * 
+         * @return {object} a json representation of the form
+         */
+        $.fn.formToObject = function() {
+           var o = {},
+               a = this.serializeArray(),
+               name;
+           $.each(a, function() {
+             name = this.name;
+               if (o[name] !== undefined) {
+                   if (!o[name].push) {
+                       o[name] = [o[name]];
+                   }
+                   o[name].push(this.value || '');
+               } else {
+                   o[name] = this.value || '';
                }
-               o[name].push(this.value || '');
-           } else {
-               o[name] = this.value || '';
-           }
-       });
-       return o;
+           });
+           return o;
+        };
     };
-
-}(jQuery));
+    
+    // support for requirejs
+    if ( typeof define === 'function' && define.amd ) {
+        define(['jquery'], function ($) { 
+            return plugin($); 
+        } );
+    } else {
+        plugin(jQuery);
+    } 
+}());
 /*jslint browser:true*/
+/**
+ * The ecmascript String prototype
+ * @external String
+ * @see {@link http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.3.1 ECMASCript 5.1 String.prototype}
+ */
 /**
  * Core.js tries to make the web suck less by providing a bunch of
  * tiny methods and library extensions that should be natively available.
@@ -62,6 +80,9 @@
 (function(exports) {
 
     'use strict';
+    
+    // TODO: Grunt should wrap all of these methods from split files into the outer wrapper
+    // that way, we could build a custom version without any or all of these methods
 
     /**
      * Get the english ordinal suffix for any number
@@ -74,6 +95,7 @@
             v = n % 100;
         return sfx[(v - 20) % 10] || sfx[v] || sfx[0];
     };
+    
     /**
      * Generic empty function to speed up supplying anon empty functions.
      * If you are using jQuery, you could use $.noop if returning undefined is desireable
@@ -84,6 +106,7 @@
     exports.fn = function() {
         return true;
     };
+    
     /**
      * empty event handler function, which simply prevents default handling
      */
@@ -112,6 +135,18 @@
             moreFn();
         };
     };
+    
+    
+    /**
+     * get a random integer within a range (including upward and lower bound)
+     * @example
+     * core.randRange(0,5) returns 0,1,2,3,4, or 5
+     * @param {number} from The lower bound
+     * @param {number} to The upward bound
+     */
+    exports.randRange = function(from,to){
+        return Math.floor( Math.random() * (to-from+1) ) + from;
+    };
 
     // UMD support
     if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
@@ -124,3 +159,60 @@
 
 
 }(typeof exports === 'object' && exports || (this === window ? window.core = {} : this)));
+
+/*global console*/
+
+// make it safe to use console.log always
+(function(a) {
+    function b() {}
+    for (
+        var c = "assert,count,debug,dir,dirxml,error,exception,group,groupCollapsed,groupEnd,info,log,markTimeline,profile,profileEnd,time,timeEnd,trace,warn".split(","), 
+        d; !! (d = c.pop());
+    ) {
+        a[d] = a[d] || b;
+    }
+})((function() {
+    try {
+        console.log();
+        return window.console;
+    } catch (a) {
+        return (window.console = {});
+    }
+}()));
+if (typeof String.prototype.endsWith !== 'function') {
+    /**
+     * see if a string ends with a given string
+     * Once ecmascript adds this natively, you should build core.js without this method:
+     * @link http://wiki.ecmascript.org/doku.php?id=harmony%3astring_extras
+     * @link http://jsperf.com/string-prototype-endswith/3
+     * @function external:String.prototype.endsWith
+     * @example
+     *  'some string'.endsWith('g') => true;
+     *  'some string'.endsWith('string') => true;
+     *  'some string'.endsWith('!') => false;
+     * @param {string} A substring expected to be in the beginning of this string
+     * @return {boolean}
+     */
+    String.prototype.endsWith = function (suffix){ 
+        return this.indexOf(suffix, this.length - suffix.length) !== -1;
+    };
+}else{
+    console.log('core.js library built with excessive String.prototype.endsWith');
+}
+if (typeof String.prototype.startsWith !== 'function') {
+    /**
+     * see if a string begins with a given string
+     * Once ecmascript adds this natively, you should build core.js without this method:
+     * @link http://wiki.ecmascript.org/doku.php?id=harmony%3astring_extras
+     * @function external:String.prototype.startsWith
+     * @example
+     *  'some string'.startsWith('s') => true;
+     * @param {string} A substring expected to be in the beginning of this string
+     * @return {boolean}
+     */
+    String.prototype.startsWith = function (prefix){
+        return this.slice(0, prefix.length) === prefix;
+    };
+}else{
+    console.log('core.js library built with excessive String.prototype.startsWith');
+}

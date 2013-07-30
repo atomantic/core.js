@@ -1,9 +1,9 @@
 /*jslint jquery:true*/
-/*global test,module,deepEqual*/
-(function($) {
-  'use strict';
-  
-  /*
+/*global test,module,deepEqual,define*/
+define(['jquery', '../src/safe.js', '../src/core.jquery.js'], function($) {
+    'use strict';
+
+    /*
     ======== A Handy Little QUnit Reference ========
     http://api.qunitjs.com/
 
@@ -22,27 +22,24 @@
       strictEqual(actual, expected, [message])
       notStrictEqual(actual, expected, [message])
       throws(block, [expected], [message])
-  */
+    */
 
-  module('jQuery#core', {
-    // This will run before each test in this module.
-    setup: function() {
-      this.elems = $('#qunit-fixture').children();
-    }
-  });
-  
-  test('formToObject',function(){
-    var $form = $('#formToObject'),
-        formObj = $form.formToObject();
-    
-    deepEqual(
-        formObj,
-        {
-            someName:'someValue',
-            hiddenName:'hiddenValue'
-        },
-        'Form convert to json object'
-    );
-  });
+    module('jQuery#core', {
+        // This will run before each test in this module.
+        setup: function() {
+            this.elems = $('#qunit-fixture').children();
+        }
+    });
 
-}(jQuery));
+    test('formToObject', function() {
+        var $form = $('#formToObject'),
+            formObj = $form.formToObject();
+
+        deepEqual(
+        formObj, {
+            someName: 'someValue',
+            hiddenName: 'hiddenValue'
+        }, 'Form convert to json object');
+    });
+
+});
