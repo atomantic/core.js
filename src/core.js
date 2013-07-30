@@ -1,6 +1,11 @@
 /*global exports,module,define*/
 /*jslint browser:true*/
 /**
+ * The ecmascript String prototype
+ * @external String
+ * @see {@link http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.3.1 ECMASCript 5.1 String.prototype}
+ */
+/**
  * Core.js tries to make the web suck less by providing a bunch of
  * tiny methods and library extensions that should be natively available.
  *

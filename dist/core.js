@@ -4,7 +4,7 @@
 /*global define*/
 /**
  * The jQuery plugin namespace.
- * @external "jQuery.fn"
+ * @external jQuery
  * @see {@link http://docs.jquery.com/Plugins/Authoring The jQuery Plugin Guide}
  */
 /**
@@ -12,7 +12,7 @@
  * This set of extensions adds functionality to the jQuery.fn external library
  * 
  * @module core.jquery
- * @memberOf "jQuery.fn"
+ * @memberOf jQuery
  *
  * @copyright 2013 Adam Eivy (@antic)
  * @license MIT
@@ -25,7 +25,7 @@
         /**
          * convert a form's name/value pairs to a json object
          * 
-         * @function external:"jQuery.fn".formToObject
+         * @function external:jQuery.formToObject
          * @example 
          * // captures the field/value set from #myform
          * var formData = $('#myform').formToObject();
@@ -61,6 +61,11 @@
     } 
 }());
 /*jslint browser:true*/
+/**
+ * The ecmascript String prototype
+ * @external String
+ * @see {@link http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.3.1 ECMASCript 5.1 String.prototype}
+ */
 /**
  * Core.js tries to make the web suck less by providing a bunch of
  * tiny methods and library extensions that should be natively available.
@@ -157,22 +162,39 @@
         return (window.console = {});
     }
 }()));
-/**
- * The ecmascript String prototype
- * @external String
- * @see {@link http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.3.1 ECMASCript 5.1 String.prototype}
- */
+if (typeof String.prototype.endsWith !== 'function') {
+    /**
+     * see if a string ends with a given string
+     * Once ecmascript adds this natively, you should build core.js without this method:
+     * @link http://wiki.ecmascript.org/doku.php?id=harmony%3astring_extras
+     * @link http://jsperf.com/string-prototype-endswith/3
+     * @function external:String.prototype.endsWith
+     * @example
+     *  'some string'.endsWith('g') => true;
+     *  'some string'.endsWith('string') => true;
+     *  'some string'.endsWith('!') => false;
+     * @param {string} A substring expected to be in the beginning of this string
+     * @return {boolean}
+     */
+    String.prototype.endsWith = function (suffix){ 
+        return this.indexOf(suffix, this.length - suffix.length) !== -1;
+    };
+}else{
+    console.log('core.js library built with excessive String.prototype.endsWith');
+}
 if (typeof String.prototype.startsWith !== 'function') {
     /**
      * see if a string begins with a given string
      * Once ecmascript adds this natively, you should build core.js without this method:
      * @link http://wiki.ecmascript.org/doku.php?id=harmony%3astring_extras
      * @function external:String.prototype.startsWith
+     * @example
+     *  'some string'.startsWith('s') => true;
      * @param {string} A substring expected to be in the beginning of this string
      * @return {boolean}
      */
-    String.prototype.startsWith = function (str){
-        return this.slice(0, str.length) === str;
+    String.prototype.startsWith = function (prefix){
+        return this.slice(0, prefix.length) === prefix;
     };
 }else{
     console.log('core.js library built with excessive String.prototype.startsWith');
