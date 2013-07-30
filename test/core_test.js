@@ -84,9 +84,9 @@ define(['jquery', '../src/core.js', '../src/safe.js'], function($, core) {
 
     });
     
-    test('randBetween', function() {
-        // test creating a random number between 0 and 4
-        // store each test and run frequency analysis to determine how
+    test('randRange', function() {
+        // test creating a random number within the set [0,4]
+        // optionally run frequency analysis to determine how
         // random we truly are...
         // make sure each possibility is hit
         // and make sure no impossibilities are hit
@@ -97,18 +97,18 @@ define(['jquery', '../src/core.js', '../src/safe.js'], function($, core) {
             three = 0,
             four = 0,
             // each value should be returned approx. this many times
-            expectedShare = iterations/5,
+            //expectedShare = iterations/5,
             // allow a 20% variance
-            acceptableDifference = expectedShare*0.2,
+            //acceptableDifference = expectedShare*0.2,
             // no number should appear less frequently than this
-            lowBound = expectedShare-acceptableDifference,
+            //lowBound = expectedShare-acceptableDifference,
             // no number should appear more frequently than this
-            highBound = expectedShare+acceptableDifference,
+            //highBound = expectedShare+acceptableDifference,
             // holder
             num;
         
         for(var i=0;i<iterations;i++){
-            num = core.randBetween(0,4);
+            num = core.randRange(0,4);
             ok(num >= 0 && num <= 4,'number is within range ('+num+')');
             if(num===0){
                 zero++;
@@ -123,11 +123,15 @@ define(['jquery', '../src/core.js', '../src/safe.js'], function($, core) {
             }
         }
         
+        // NOTE: these tests are acedemically interesting but we probably don't really want to test the efficacy of Math.random() unless we want
+        // to roll our own alternative in instances where a machine time falls short
+        /*
         ok(zero >= lowBound && zero <= highBound,'zero was returned an acceptable number of times ('+zero+')');
         ok(one >= lowBound && one <= highBound,'one was returned an acceptable number of times ('+one+')');
         ok(two >= lowBound && two <= highBound,'two was returned an acceptable number of times ('+two+')');
         ok(three >= lowBound && three <= highBound,'three was returned an acceptable number of times ('+three+')');
         ok(four >= lowBound && four <= highBound,'four was returned an acceptable number of times ('+four+')');
+        */
         
     });
 

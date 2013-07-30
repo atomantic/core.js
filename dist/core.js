@@ -80,6 +80,9 @@
 (function(exports) {
 
     'use strict';
+    
+    // TODO: Grunt should wrap all of these methods from split files into the outer wrapper
+    // that way, we could build a custom version without any or all of these methods
 
     /**
      * Get the english ordinal suffix for any number
@@ -135,13 +138,13 @@
     
     
     /**
-     * get a random integer between set (including upward and lower bound)
+     * get a random integer within a range (including upward and lower bound)
      * @example
-     * core.randBetween(0,5) returns 0,1,2,3,4, or 5
+     * core.randRange(0,5) returns 0,1,2,3,4, or 5
      * @param {number} from The lower bound
      * @param {number} to The upward bound
      */
-    exports.randBetween = function(from,to){
+    exports.randRange = function(from,to){
         return Math.floor( Math.random() * (to-from+1) ) + from;
     };
 
