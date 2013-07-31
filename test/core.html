@@ -11,8 +11,18 @@
 <body>
   <div id="qunit"></div>
   <div id="qunit-fixture">
-    <span>lame test markup</span>
-    <span>normal test markup</span>
+    <div id="containsI">
+      <p class="insensitive">a TEST that is CaSE-InsensITIVE</p>
+      <p class="insensitive">a test that is case-insensitive</p>
+      <p>second to last element</p>
+      <p>last element</p>
+    </div>
+    <div id="startsWith">
+      <p>some element</p>
+      <p>another element</p>
+      <p>second to last element</p>
+      <p>last element</p>
+    </div>
     <form id="formToObject">
         <input type="text" name="someName" value="someValue" />
         <input type="hidden" name="hiddenName" value="hiddenValue" />
