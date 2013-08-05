@@ -105,6 +105,141 @@ tiny methods and library extensions that should be natively available.</div>
         <dl>
             
 <dt>
+    <h4 class="name" id="curry"><span class="type-signature">&lt;static> </span>curry<span class="signature">(fnBase)</span><span class="type-signature"> &rarr; {function}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        create a partial application function (curry)
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>fnBase</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The function to curry or partially apply</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">function</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="eFn"><span class="type-signature">&lt;static> </span>eFn<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
@@ -146,7 +281,7 @@ tiny methods and library extensions that should be natively available.</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core.js.html">core.js</a>, <a href="core.js.html#line52">line 52</a>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line71">line 71</a>
     </li></ul></dd>
     
     
@@ -217,7 +352,7 @@ but this one is useful for anything requiring a boolean true return
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core.js.html">core.js</a>, <a href="core.js.html#line45">line 45</a>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line64">line 64</a>
     </li></ul></dd>
     
     
@@ -402,7 +537,7 @@ but this one is useful for anything requiring a boolean true return
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core.js.html">core.js</a>, <a href="core.js.html#line67">line 67</a>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line86">line 86</a>
     </li></ul></dd>
     
     
@@ -449,8 +584,8 @@ but this one is useful for anything requiring a boolean true return
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>   var fn = core.fnMore(oldFn,newFn,someObj);
-   fn(); // runs oldFn, then newFn in the context of someObj</code></pre>
+    <pre class="prettyprint"><code>  var fn = core.fnMore(oldFn,newFn,someObj);
+  fn(); // runs oldFn, then newFn in the context of someObj</code></pre>
 
     
 </dd>
@@ -547,7 +682,7 @@ but this one is useful for anything requiring a boolean true return
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core.js.html">core.js</a>, <a href="core.js.html#line32">line 32</a>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line51">line 51</a>
     </li></ul></dd>
     
     
@@ -709,7 +844,7 @@ but this one is useful for anything requiring a boolean true return
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core.js.html">core.js</a>, <a href="core.js.html#line86">line 86</a>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line106">line 106</a>
     </li></ul></dd>
     
     
@@ -734,7 +869,105 @@ but this one is useful for anything requiring a boolean true return
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>core.randRange(0,5) returns 0,1,2,3,4, or 5</code></pre>
+    <pre class="prettyprint"><code> core.randRange(0,5) returns 0,1,2,3,4, or 5</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="uuid"><span class="type-signature">&lt;static> </span>uuid<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        generate a random v4 UUID of the form xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx, 
+where each x is replaced with a random hexadecimal digit from 0 to f, 
+and y is replaced with a random hexadecimal digit from 8 to b.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line120">line 120</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    random uuid
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">string</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code> var uuid = core.uuid() => </code></pre>
 
     
 </dd>
@@ -761,7 +994,7 @@ but this one is useful for anything requiring a boolean true return
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Tue Jul 30 2013 17:03:10 GMT-0700 (PDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Mon Aug 05 2013 16:27:07 GMT-0700 (PDT)
 </footer>
 
 <script> prettyPrint(); </script>

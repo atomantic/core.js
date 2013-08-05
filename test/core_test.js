@@ -1,5 +1,5 @@
 /*jslint jquery:true,browser:true */
-/*global test,module,deepEqual,equal,define,ok*/
+/*global test,module,deepEqual,equal,define,ok,notEqual*/
 define(['jquery', '../src/core.js', '../src/safe.js'], function($, core) {
     'use strict';
 
@@ -29,6 +29,29 @@ define(['jquery', '../src/core.js', '../src/safe.js'], function($, core) {
         setup: function() {
             this.elems = $('#qunit-fixture').children();
         }
+    });
+    
+    test('curry',function(){
+        // create a curry fn
+        // this function takes whatever arguments are passed and adds them together
+          var adder = function() {
+            var n = 0, args = [].slice.call(arguments);
+
+            for (var i = 0, len = args.length; i < len; i++) {
+              n += args[i];
+            }   
+
+            return n;
+          };
+
+          equal(adder(2,2),4,'test basic adder with 2 args');
+
+          // curry adder for later application
+          var addTwelve = core.curry(adder, 12);
+
+          equal(addTwelve(3),15,'test add twelve to 3 for 15');
+          
+          equal(addTwelve(3,6,4),25,'test add twelve with 3 args');
     });
 
     test('ord', function() {
@@ -132,6 +155,43 @@ define(['jquery', '../src/core.js', '../src/safe.js'], function($, core) {
         ok(three >= lowBound && three <= highBound,'three was returned an acceptable number of times ('+three+')');
         ok(four >= lowBound && four <= highBound,'four was returned an acceptable number of times ('+four+')');
         */
+        
+    });
+    
+    test('uuid',function(){
+        var uuid1 = core.uuid(),
+            uuid2 = core.uuid(),
+            parts = uuid1.split('-'),
+            limited = uuid1.charAt(19),
+            cache = {},
+            i,
+            uuid;
+            
+        notEqual(uuid1,uuid2,'two different uuids generated: '+uuid1+' and '+uuid2);
+        
+        equal(parts.length,5,'uuid has correct number of segments');
+        
+        equal(parts[0].length,8,'1st segment length is 8');
+        equal(parts[1].length,4,'2nd segment length is 4');
+        equal(parts[2].length,4,'3rd segment length is 4');
+        equal(parts[3].length,4,'4th segment length is 4');
+        equal(parts[4].length,12,'5th segment length is 12');
+        
+        equal(parts[2].charAt(0),'4','3rd segment begins with a 4');
+        
+        
+        ok((/[^cdef0-7]/).test(limited),'4th segment begins with 8-b ('+limited+')');
+        
+        // now let's generate a ton of them and make sure they are unique
+        
+        for(i=0;i<10000;i++){
+            uuid = core.uuid();
+            limited = uuid.charAt(19);
+            
+            ok(!cache[uuid] && (/[89ab]/).test(limited),uuid+' is unique and 4th segment begins with 8-b ('+limited+')');
+            
+            cache[uuid] = 1;
+        }
         
     });
 
