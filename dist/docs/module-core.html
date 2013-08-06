@@ -38,8 +38,8 @@
     
     
         
-            <div class="description">Core.js tries to make the web suck less by providing a bunch of
-tiny methods and library extensions that should be natively available.</div>
+            <div class="description">Core.js fills in the gaps where standards lag behind by providing a lot of tiny functions
+that really should just already be there</div>
         
         
         
@@ -194,7 +194,7 @@ tiny methods and library extensions that should be natively available.</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core.js.html">core.js</a>, <a href="core.js.html#line34">line 34</a>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line46">line 46</a>
     </li></ul></dd>
     
     
@@ -234,6 +234,21 @@ tiny methods and library extensions that should be natively available.</div>
 
         
     
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>        var adder = function() {
+            var n = 0, args = [].slice.call(arguments);
+            for (var i = 0, len = args.length; i < len; i++) {
+                n += args[i];
+            }   
+            return n;
+        };
+        adder(2,2) === 4;
+        // curry adder for later application as a partial
+        var addTwelve = core.curry(adder, 12);
+        addTwelve(5,3) === 20;</code></pre>
+
     
 </dd>
 
@@ -281,7 +296,7 @@ tiny methods and library extensions that should be natively available.</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core.js.html">core.js</a>, <a href="core.js.html#line71">line 71</a>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line85">line 85</a>
     </li></ul></dd>
     
     
@@ -352,7 +367,7 @@ but this one is useful for anything requiring a boolean true return
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core.js.html">core.js</a>, <a href="core.js.html#line64">line 64</a>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line78">line 78</a>
     </li></ul></dd>
     
     
@@ -396,6 +411,11 @@ but this one is useful for anything requiring a boolean true return
 
         
     
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code> this.onComplete = conf.onComplete||fn;</code></pre>
+
     
 </dd>
 
@@ -537,7 +557,7 @@ but this one is useful for anything requiring a boolean true return
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core.js.html">core.js</a>, <a href="core.js.html#line86">line 86</a>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line101">line 101</a>
     </li></ul></dd>
     
     
@@ -585,7 +605,8 @@ but this one is useful for anything requiring a boolean true return
         <h5>Example</h5>
         
     <pre class="prettyprint"><code>  var fn = core.fnMore(oldFn,newFn,someObj);
-  fn(); // runs oldFn, then newFn in the context of someObj</code></pre>
+  fn(); 
+  // runs oldFn, then newFn in the context of someObj</code></pre>
 
     
 </dd>
@@ -682,7 +703,7 @@ but this one is useful for anything requiring a boolean true return
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core.js.html">core.js</a>, <a href="core.js.html#line51">line 51</a>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line63">line 63</a>
     </li></ul></dd>
     
     
@@ -732,7 +753,7 @@ but this one is useful for anything requiring a boolean true return
         
             
 <dt>
-    <h4 class="name" id="randRange"><span class="type-signature">&lt;static> </span>randRange<span class="signature">(from, to)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="randRange"><span class="type-signature">&lt;static> </span>randRange<span class="signature">(from, to)</span><span class="type-signature"> &rarr; {number}</span></h4>
     
     
 </dt>
@@ -844,7 +865,7 @@ but this one is useful for anything requiring a boolean true return
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core.js.html">core.js</a>, <a href="core.js.html#line106">line 106</a>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line122">line 122</a>
     </li></ul></dd>
     
     
@@ -865,6 +886,24 @@ but this one is useful for anything requiring a boolean true return
     
     
     
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">number</span>
+
+
+	</dd>
+</dl>
+
+        
     
     
         <h5>Example</h5>
@@ -920,7 +959,7 @@ and y is replaced with a random hexadecimal digit from 8 to b.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core.js.html">core.js</a>, <a href="core.js.html#line120">line 120</a>
+        <a href="core.js.html">core.js</a>, <a href="core.js.html#line136">line 136</a>
     </li></ul></dd>
     
     
@@ -967,7 +1006,7 @@ and y is replaced with a random hexadecimal digit from 8 to b.
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code> var uuid = core.uuid() => </code></pre>
+    <pre class="prettyprint"><code> var uuid = core.uuid();</code></pre>
 
     
 </dd>
@@ -994,7 +1033,7 @@ and y is replaced with a random hexadecimal digit from 8 to b.
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Tue Aug 06 2013 12:20:56 GMT-0700 (PDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Tue Aug 06 2013 15:00:18 GMT-0700 (PDT)
 </footer>
 
 <script> prettyPrint(); </script>

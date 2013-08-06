@@ -29,8 +29,8 @@
          * 
          * @function external:jQuery.formToObject
          * @example 
-         * // captures the field/value set from #myform
-         * var formData = $('#myform').formToObject();
+         *  // captures the field/value set from #myform
+         *  var formData = $('#myform').formToObject();
          * 
          * @return {object} a json representation of the form
          */
@@ -69,7 +69,8 @@
         /**
          * :startsWith() returns a selection of elements that have text
          * starting with the given string
-         * usage: $(':startsWith(text)')
+         * @example
+         *  $(':startsWith(text)')
          */
         $.expr[":"].startsWith = function(elem, i, match) {
             return ( elem.textContent || elem.innerText || '' ).indexOf( match[3] ) === 0;
@@ -92,8 +93,8 @@
  * @see {@link http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.3.1 ECMASCript 5.1 String.prototype}
  */
 /**
- * Core.js tries to make the web suck less by providing a bunch of
- * tiny methods and library extensions that should be natively available.
+ * Core.js fills in the gaps where standards lag behind by providing a lot of tiny functions
+ * that really should just already be there
  *
  * @module core
  * @link https://github.com/atomantic/core.js
@@ -116,6 +117,18 @@
      * @link http://stackoverflow.com/questions/113780/javascript-curry-what-are-the-practical-applications
      * @param {function} fnBase The function to curry or partially apply
      * @return {function}
+     * @example
+        var adder = function() {
+            var n = 0, args = [].slice.call(arguments);
+            for (var i = 0, len = args.length; i < len; i++) {
+                n += args[i];
+            }   
+            return n;
+        };
+        adder(2,2) === 4;
+        // curry adder for later application as a partial
+        var addTwelve = core.curry(adder, 12);
+        addTwelve(5,3) === 20;
      */
     exports.curry = function(fnBase){
          // convert arguments to an array and store reference upward of return closure
@@ -131,8 +144,8 @@
      * @param {number} n number The number to evaluate
      * @return {string} The ordinal for that number
      * @example:
-     *  core.ord(1) => 'st'
-     *  core.ord(345) => 'th'
+     *  core.ord(1) === 'st'
+     *  core.ord(345) === 'th'
      */
     exports.ord = function(n) {
         var sfx = ["th", "st", "nd", "rd"],
@@ -146,6 +159,8 @@
      * but this one is useful for anything requiring a boolean true return
      *
      * @return {boolean} true
+     * @example
+     *  this.onComplete = conf.onComplete||fn;
      */
     exports.fn = function() {
         return true;
@@ -161,13 +176,14 @@
     /**
      * get a new function, which runs two functions serially within a given context
      *
-     * @example
-     *   var fn = core.fnMore(oldFn,newFn,someObj);
-     *   fn(); // runs oldFn, then newFn in the context of someObj
      * @param {function} originalFn The original function to run
      * @param {function} moreFn The extra function to run in the same context after the first
      * @param {object} scope The context in which to run the fn
      * @return {function} the new function which will serially call the given functions in the given scope
+     * @example
+     *   var fn = core.fnMore(oldFn,newFn,someObj);
+     *   fn(); 
+     *   // runs oldFn, then newFn in the context of someObj
      */
     exports.fnMore = function(originalFn, moreFn, scope) {
         return scope ?
@@ -184,10 +200,11 @@
     /**
      * get a random integer within a range (including upward and lower bound)
      * 
-     * @example
-     *  core.randRange(0,5) returns 0,1,2,3,4, or 5
      * @param {number} from The lower bound
      * @param {number} to The upward bound
+     * @return {number}
+     * @example
+     *  core.randRange(0,5) returns 0,1,2,3,4, or 5
      */
     exports.randRange = function(from,to){
         return Math.floor( Math.random() * (to-from+1) ) + from;
@@ -199,9 +216,9 @@
      * and y is replaced with a random hexadecimal digit from 8 to b.
      * 
      * @link http://www.ietf.org/rfc/rfc4122.txt
-     * @example
-     *  var uuid = core.uuid() => 
      * @return {string} random uuid
+     * @example
+     *  var uuid = core.uuid();
      */
     exports.uuid = function(){
         var d = new Date().getTime();
@@ -249,16 +266,17 @@ String.prototype.capitalize = function() {
 if (typeof String.prototype.endsWith !== 'function') {
     /**
      * see if a string ends with a given string
+     * 
      * Once ecmascript adds this natively, you should build core.js without this method:
      * @link http://wiki.ecmascript.org/doku.php?id=harmony%3astring_extras
      * @link http://jsperf.com/string-prototype-endswith/3
      * @function external:String.prototype.endsWith
-     * @example
-     *  'some string'.endsWith('g') => true;
-     *  'some string'.endsWith('string') => true;
-     *  'some string'.endsWith('!') => false;
      * @param {string} A substring expected to be in the beginning of this string
      * @return {boolean}
+      * @example
+      *  'some string'.endsWith('g') === true;
+      *  'some string'.endsWith('string') === true;
+      *  'some string'.endsWith('!') === false;
      */
     String.prototype.endsWith = function (suffix){ 
         return this.indexOf(suffix, this.length - suffix.length) !== -1;
@@ -275,13 +293,14 @@ String.prototype.right = function(n) {
 if (typeof String.prototype.startsWith !== 'function') {
     /**
      * see if a string begins with a given string
+     * 
      * Once ecmascript adds this natively, you should build core.js without this method:
      * @link http://wiki.ecmascript.org/doku.php?id=harmony%3astring_extras
      * @function external:String.prototype.startsWith
-     * @example
-     *  'some string'.startsWith('s') => true;
      * @param {string} A substring expected to be in the beginning of this string
      * @return {boolean}
+      * @example
+      *  'some string'.startsWith('s') === true;
      */
     String.prototype.startsWith = function (prefix){
         return this.slice(0, prefix.length) === prefix;

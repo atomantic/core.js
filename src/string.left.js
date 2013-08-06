@@ -5,7 +5,7 @@
  * @param {number}     n     The lenth of the string to return
  * @return {string}
  * @example
- *  'foobar'.left(3) => 'foo'
+ *  'foobar'.left(3) === 'foo'
  */
 String.prototype.left = function(n) {
 	return this.substr(0,n);

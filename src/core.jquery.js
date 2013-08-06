@@ -27,8 +27,8 @@
          * 
          * @function external:jQuery.formToObject
          * @example 
-         * // captures the field/value set from #myform
-         * var formData = $('#myform').formToObject();
+         *  // captures the field/value set from #myform
+         *  var formData = $('#myform').formToObject();
          * 
          * @return {object} a json representation of the form
          */
@@ -67,7 +67,8 @@
         /**
          * :startsWith() returns a selection of elements that have text
          * starting with the given string
-         * usage: $(':startsWith(text)')
+         * @example
+         *  $(':startsWith(text)')
          */
         $.expr[":"].startsWith = function(elem, i, match) {
             return ( elem.textContent || elem.innerText || '' ).indexOf( match[3] ) === 0;
