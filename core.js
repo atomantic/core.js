@@ -243,6 +243,9 @@
         return (window.console = {});
     }
 }()));
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.substring(1).toLowerCase();
+};
 if (typeof String.prototype.endsWith !== 'function') {
     /**
      * see if a string ends with a given string
@@ -263,6 +266,12 @@ if (typeof String.prototype.endsWith !== 'function') {
 }else{
     console.log('core.js library built with excessive String.prototype.endsWith');
 }
+String.prototype.left = function(n) {
+	return this.substr(0,n);
+};
+String.prototype.right = function(n) {
+	return this.substr((this.length-n),this.length);
+};
 if (typeof String.prototype.startsWith !== 'function') {
     /**
      * see if a string begins with a given string

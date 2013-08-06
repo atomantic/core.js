@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: string.endsWith.js</title>
+    <title>JSDoc: Source: string.capitalize.js</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Source: string.endsWith.js</h1>
+    <h1 class="page-title">Source: string.capitalize.js</h1>
     
     
 
@@ -25,27 +25,15 @@
     
     <section>
         <article>
-            <pre class="prettyprint source"><code>/*global console*/
-if (typeof String.prototype.endsWith !== 'function') {
-    /**
-     * see if a string ends with a given string
-     * Once ecmascript adds this natively, you should build core.js without this method:
-     * @link http://wiki.ecmascript.org/doku.php?id=harmony%3astring_extras
-     * @link http://jsperf.com/string-prototype-endswith/3
-     * @function external:String.prototype.endsWith
-     * @example
-     *  'some string'.endsWith('g') => true;
-     *  'some string'.endsWith('string') => true;
-     *  'some string'.endsWith('!') => false;
-     * @param {string} A substring expected to be in the beginning of this string
-     * @return {boolean}
-     */
-    String.prototype.endsWith = function (suffix){ 
-        return this.indexOf(suffix, this.length - suffix.length) !== -1;
-    };
-}else{
-    console.log('core.js library built with excessive String.prototype.endsWith');
-}</code></pre>
+            <pre class="prettyprint source"><code>/**
+ * Capitalizes the first letter of a string and downcases all the others.
+ * @example
+ *  'hello'.capitalize() => 'Hello'
+ *  'HELLO WORLD!'.capitalize() =>'Hello world!'
+ */
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.substring(1).toLowerCase();
+};</code></pre>
         </article>
     </section>
 
