@@ -1,4 +1,4 @@
-/*! core - v0.1.1 - 2013-08-05
+/*! core - v0.1.1 - 2013-08-06
 * https://github.com/atomantic/core.js
 * Copyright (c) 2013 Adam Eivy (@antic); Licensed MIT */
 /*global define*/
@@ -280,3 +280,6 @@ if (typeof String.prototype.startsWith !== 'function') {
 }else{
     console.log('core.js library built with excessive String.prototype.startsWith');
 }
+String.prototype.trunc = function(len,suffix) {
+    return this.length > len ? this.slice(0, len) + (suffix||'&hellip;') : this;
+};
