@@ -1,8 +1,9 @@
 /**
  * get a substring of a particular length from the right
  * 
+ * @function external:String.prototype.right
  * @param {number}     n     The lenth of the string to return
- * @return {string}     The substring
+ * @return {string}
  * @example
  *  'foobar'.right(3) => 'bar'
  */
