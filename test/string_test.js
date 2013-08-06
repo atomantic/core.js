@@ -3,7 +3,8 @@
 define([ 
     '../src/safe.js', 
     '../src/string.startsWith.js', 
-    '../src/string.endsWith.js'
+    '../src/string.endsWith.js', 
+    '../src/string.trunc.js'
     ], function() {
 
     'use strict';
@@ -52,6 +53,15 @@ define([
         ok(str.endsWith('like'),'string ends with last two letters');
         ok(str.endsWith('and the like'),'string ends with last part');
         ok(!str.endsWith('foobar'),'string does not end with foobar');
+    });
+    
+    test('trunc', function() {
+        equal(typeof str.trunc,'function','trunc function has been added to String.prototype');
+        equal(str.trunc(1),'I&hellip;','truncates to 1 char');
+        equal(str.trunc(0),'&hellip;','truncates to ellipsis');
+        equal(str.trunc(10),'It is a lo&hellip;','truncates to 10 chars');
+        equal(str.trunc(5000),str,'truncates beyond length to full string only');
+        equal(str.trunc(1,'...<a>read more</a>'),'I...<a>read more</a>','truncates with custom suffix');
     });
 
 });

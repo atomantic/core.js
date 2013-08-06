@@ -96,6 +96,7 @@ _Also, please note that only the index.html in the "dist" subdirectory is manual
  * safe console.log
  * String.prototype.startsWith(prefix)
  * String.prototype.endsWith(suffix)
+ * String.prototype.trunc(len,suffix)
  
 ### <sup>v0.1.0</sup>
 
