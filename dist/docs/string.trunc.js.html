@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Index</title>
+    <title>JSDoc: Source: string.trunc.js</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,30 +17,26 @@
 
 <div id="main">
     
-    <h1 class="page-title">Index</h1>
+    <h1 class="page-title">Source: string.trunc.js</h1>
     
     
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>/**
+ * shorten a string, adding a suffix in place of excessive characters
+ * default suffix is an html encoded ellipsis '&hellip;'
+ * 
+ * @param {number}     len     The lenth of the string to keep (not counting suffix)
+ * @param {string}  suffix  The suffix to append (e.g. '...&lt;a>read more&lt;/a>')
+ */
+String.prototype.trunc = function(len,suffix) {
+    return this.length > len ? this.slice(0, len) + (suffix||'&hellip;') : this;
+};</code></pre>
+        </article>
+    </section>
 
 
 

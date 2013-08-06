@@ -1,4 +1,4 @@
-/*! core - v0.1.1 - 2013-08-05
+/*! core - v0.1.1 - 2013-08-06
 * https://github.com/atomantic/core.js
 * Copyright (c) 2013 Adam Eivy (@antic); Licensed MIT */
 /*global define*/
@@ -243,6 +243,9 @@
         return (window.console = {});
     }
 }()));
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.substring(1).toLowerCase();
+};
 if (typeof String.prototype.endsWith !== 'function') {
     /**
      * see if a string ends with a given string
@@ -263,6 +266,12 @@ if (typeof String.prototype.endsWith !== 'function') {
 }else{
     console.log('core.js library built with excessive String.prototype.endsWith');
 }
+String.prototype.left = function(n) {
+	return this.substr(0,n);
+};
+String.prototype.right = function(n) {
+	return this.substr((this.length-n),this.length);
+};
 if (typeof String.prototype.startsWith !== 'function') {
     /**
      * see if a string begins with a given string
@@ -280,3 +289,6 @@ if (typeof String.prototype.startsWith !== 'function') {
 }else{
     console.log('core.js library built with excessive String.prototype.startsWith');
 }
+String.prototype.trunc = function(len,suffix) {
+    return this.length > len ? this.slice(0, len) + (suffix||'&hellip;') : this;
+};

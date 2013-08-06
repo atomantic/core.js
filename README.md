@@ -94,8 +94,11 @@ _Also, please note that only the index.html in the "dist" subdirectory is manual
  * uuid()
  * randRange(from,to)
  * safe console.log
- * String.prototype.startsWith(prefix)
+ * String.prototype.capitalize()
  * String.prototype.endsWith(suffix)
+ * String.prototype.left(size)
+ * String.prototype.right(size)
+ * String.prototype.startsWith(prefix)
  * String.prototype.trunc(len,suffix)
  
 ### <sup>v0.1.0</sup>

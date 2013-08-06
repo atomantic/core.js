@@ -2,8 +2,11 @@
 /*global test,module,equal,define,ok*/
 define([ 
     '../src/safe.js', 
+    '../src/string.capitalize.js',
+    '../src/string.endsWith.js',
     '../src/string.startsWith.js', 
-    '../src/string.endsWith.js', 
+    '../src/string.left.js',
+    '../src/string.right.js',
     '../src/string.trunc.js'
     ], function() {
 
@@ -38,9 +41,19 @@ define([
             //this.elems = $('#qunit-fixture').children();
         }
     });
+    
+    test('capitalize',function(){
+        equal(typeof str.capitalize,'function','function has been added to String.prototype');
+        var basic = 'hello.',
+            mixed = 'hello WORLD.',
+            funked = '1234 #asdf!j';
+        equal(basic.capitalize(),'Hello.','basic cap');    
+        equal(mixed.capitalize(),'Hello world.','mixed');
+        equal(funked.capitalize(),'1234 #asdf!j','funky');
+    });
 
     test('startsWith', function() {
-        equal(typeof str.startsWith,'function','startsWith function has been added to String.prototype');
+        equal(typeof str.startsWith,'function','function has been added to String.prototype');
         ok(str.startsWith('I'),'string starts with first letter');
         ok(str.startsWith('It'),'string starts with first two letters');
         ok(str.startsWith('It is a long '),'string starts with first part');
@@ -48,7 +61,7 @@ define([
     });
     
     test('endsWith', function() {
-        equal(typeof str.endsWith,'function','endsWith function has been added to String.prototype');
+        equal(typeof str.endsWith,'function','function has been added to String.prototype');
         ok(str.endsWith('e'),'string ends with last letter');
         ok(str.endsWith('like'),'string ends with last two letters');
         ok(str.endsWith('and the like'),'string ends with last part');
@@ -56,12 +69,28 @@ define([
     });
     
     test('trunc', function() {
-        equal(typeof str.trunc,'function','trunc function has been added to String.prototype');
+        equal(typeof str.trunc,'function','function has been added to String.prototype');
         equal(str.trunc(1),'I&hellip;','truncates to 1 char');
         equal(str.trunc(0),'&hellip;','truncates to ellipsis');
         equal(str.trunc(10),'It is a lo&hellip;','truncates to 10 chars');
         equal(str.trunc(5000),str,'truncates beyond length to full string only');
         equal(str.trunc(1,'...<a>read more</a>'),'I...<a>read more</a>','truncates with custom suffix');
+    });
+    
+    test('left',function(){
+        equal(typeof str.left,'function','function has been added to String.prototype');
+        equal(str.left(2),'It','left two letters');
+        equal(str.left(0),'','left zero letters');
+        equal(str.left(10),'It is a lo','left ten letters');
+        equal(str.left(5000),str,'left beyond letters');
+    });
+    
+    test('right',function(){
+        equal(typeof str.right,'function','function has been added to String.prototype');
+        equal(str.right(2),'ke','right two letters');
+        equal(str.right(0),'','right zero letters');
+        equal(str.right(10),'d the like','right ten letters');
+        equal(str.right(5000),str,'left beyond letters');
     });
 
 });

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Index</title>
+    <title>JSDoc: Source: string.left.js</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,30 +17,27 @@
 
 <div id="main">
     
-    <h1 class="page-title">Index</h1>
+    <h1 class="page-title">Source: string.left.js</h1>
     
     
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>/**
+ * get a substring of a particular length from the left
+ * 
+ * @param {number}     n     The lenth of the string to return
+ * @return {string}     The substring
+ * @example
+ *  'foobar'.left(3) => 'foo'
+ */
+String.prototype.left = function(n) {
+	return this.substr(0,n);
+};</code></pre>
+        </article>
+    </section>
 
 
 

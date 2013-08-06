@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Index</title>
+    <title>JSDoc: Source: string.capitalize.js</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,30 +17,25 @@
 
 <div id="main">
     
-    <h1 class="page-title">Index</h1>
+    <h1 class="page-title">Source: string.capitalize.js</h1>
     
     
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>/**
+ * Capitalizes the first letter of a string and downcases all the others.
+ * @example
+ *  'hello'.capitalize() => 'Hello'
+ *  'HELLO WORLD!'.capitalize() =>'Hello world!'
+ */
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.substring(1).toLowerCase();
+};</code></pre>
+        </article>
+    </section>
 
 
 
