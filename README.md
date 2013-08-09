@@ -4,21 +4,23 @@
 
 ## About
 
-OK, let's be honest: lots of stuff about the web just blows. While I may make devil's-advocate and practical arguments against some of the complaints in [Zed Shaw's talk](http://vimeo.com/43380467), he still makes a lot of great points. 
+OK, let's be honest: web standards can't keep up with innovation. While I may make devil's-advocate and practical arguments against some of the complaints in [Zed Shaw's talk](http://vimeo.com/43380467), he still makes a lot of great points regarding the speed (or lack thereof) in standards adoption.
 
-If the web really worked right:
+If web standards were implemented as quickly as they should be:
 
 * we wouldn't have to write out ```Math.floor( Math.random() * (10-1+1) ) + 1``` in order to choose a number between 1 and 10!
-* we wouldn't have to create a tool to format the date in a sensible, readable way (and there wouldn't be 30 different libraries and standard for formatting the same).
+* we wouldn't have to create a tool to format the date in a sensible, readable way (and there wouldn't be 30 different libraries and standards for doing it).
 * we wouldn't have to provide our own ellipsis method for truncating strings
-* our own GUID generating function
+* our own UUID generating function
 * our own method to get the ordinal suffix of a number (1 => "st")
 * etc...
 
 That's the kind of BS you'll find here. 
-If you think the web works perfect without all this sugar, this isn't for you. You'll probably eventually write some of this over again yourself.
+If you think the web works perfect without all this sugar, this isn't for you. You'll probably eventually write some of this over again yourself and end up polluting the global namespace to have that nice little global helper everywhere. Or you could [custom download](http://atomantic.github.io/core.js) a version of core.js with all those tools contained within a single namespace.
 
-Additionally, this library provides a selection of String methods in patient anticipation of the next ecmascript standard: http://wiki.ecmascript.org/doku.php?id=harmony%3astring_extras
+Additionally, this library provides a selection of String methods in patient anticipation of the next ecmascript standard, hoping it might have some of these methods: http://wiki.ecmascript.org/doku.php?id=harmony%3astring_extras
+
+If you want polyfils for ES5, I highly recommend using [the es5-shim](https://github.com/kriskowal/es5-shim) in tandem with core.js and your custom code.
 
 ## Getting Started
 ### On the server
@@ -43,7 +45,7 @@ Download the [production version][min] or the [development version][max].
 In your web page:
 
 ```html
-<!-- NOTE: by not setting an exports var in the window context, core will create the lib within window.core -->
+<!-- NOTE: by not setting an exports var in the window context, core will create the lib within window.core (or core.*) -->
 <script src="dist/core.min.js"></script>
 <script>
 // "get the english ordinal for a number"
@@ -82,16 +84,22 @@ Please note that the codebase uses 4 spaces (not 2) instead of tabs--and uses th
 Add unit tests for any new or changed functionality. 
 Lint and test your code using [Grunt](http://gruntjs.com/).
 
-_Also, please note that only the index.html in the "dist" subdirectory is manually edited--the rest are generated via Grunt. You'll find source code in the "src" subdirectory!_
+_Also, please note that only the index.html in the "dist" subdirectory is manually edited for the purpose of DownloadBuilder.js--the rest are generated via Grunt. You'll find source code in the "src" subdirectory!_
 
 ## Release History
 
 ### <sup>v0.1.1</sup>
 
+ * curry(fn)
+ * uuid()
  * randRange(from,to)
  * safe console.log
- * String.prototype.startsWith(prefix)
+ * String.prototype.capitalize()
  * String.prototype.endsWith(suffix)
+ * String.prototype.left(size)
+ * String.prototype.right(size)
+ * String.prototype.startsWith(prefix)
+ * String.prototype.trunc(len,suffix)
  
 ### <sup>v0.1.0</sup>
 
