@@ -1,4 +1,4 @@
-/*! core - v0.1.1 - 2013-08-06
+/*! core - v0.1.1 - 2013-08-09
 * https://github.com/atomantic/core.js
 * Copyright (c) 2013 Adam Eivy (@antic); Licensed MIT */
 /*global define*/
