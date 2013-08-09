@@ -51,6 +51,19 @@ module.exports = function(grunt) {
         src: ['test/**/*.js']
       }
     },
+    notify: {
+        done: {
+          options: {
+            message: 'Build Success!'
+          }
+        }
+    },
+    notify_hooks: {
+        options: {
+          enabled: true,
+          max_jshint_notifications: 5
+        }
+    },
     dox: {
         options: {
           title: "Core.js Documentation"
@@ -96,8 +109,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   //grunt.loadNpmTasks('grunt-dox');
   grunt.loadNpmTasks('grunt-jsdoc');
+  // Automatic notifications when tasks fail.
+  grunt.loadNpmTasks('grunt-notify');
+  // grunt-notify options handler
+  grunt.task.run('notify_hooks');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify', 'jsdoc']);
+  grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify', 'jsdoc', 'notify:done']);
 
 };
