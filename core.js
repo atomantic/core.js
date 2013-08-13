@@ -1,4 +1,4 @@
-/*! core - v0.1.1 - 2013-08-09
+/*! core - v0.1.1 - 2013-08-13
 * https://github.com/atomantic/core.js
 * Copyright (c) 2013 Adam Eivy (@antic); Licensed MIT */
 /*global define*/
@@ -263,51 +263,18 @@
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.substring(1).toLowerCase();
 };
-if (typeof String.prototype.endsWith !== 'function') {
-    /**
-     * see if a string ends with a given string
-     * 
-     * Once ecmascript adds this natively, you should build core.js without this method:
-     * @link http://wiki.ecmascript.org/doku.php?id=harmony%3astring_extras
-     * @link http://jsperf.com/string-prototype-endswith/3
-     * @function external:String.prototype.endsWith
-     * @param {string} A substring expected to be in the beginning of this string
-     * @return {boolean}
-      * @example
-      *  'some string'.endsWith('g') === true;
-      *  'some string'.endsWith('string') === true;
-      *  'some string'.endsWith('!') === false;
-     */
-    String.prototype.endsWith = function (suffix){ 
-        return this.indexOf(suffix, this.length - suffix.length) !== -1;
-    };
-}else{
-    console.log('core.js library built with excessive String.prototype.endsWith');
-}
+String.prototype.endsWith = function (suffix){ 
+    return this.indexOf(suffix, this.length - suffix.length) !== -1;
+};
 String.prototype.left = function(n) {
 	return this.substr(0,n);
 };
 String.prototype.right = function(n) {
 	return this.substr((this.length-n),this.length);
 };
-if (typeof String.prototype.startsWith !== 'function') {
-    /**
-     * see if a string begins with a given string
-     * 
-     * Once ecmascript adds this natively, you should build core.js without this method:
-     * @link http://wiki.ecmascript.org/doku.php?id=harmony%3astring_extras
-     * @function external:String.prototype.startsWith
-     * @param {string} A substring expected to be in the beginning of this string
-     * @return {boolean}
-      * @example
-      *  'some string'.startsWith('s') === true;
-     */
-    String.prototype.startsWith = function (prefix){
-        return this.slice(0, prefix.length) === prefix;
-    };
-}else{
-    console.log('core.js library built with excessive String.prototype.startsWith');
-}
+String.prototype.startsWith = function (prefix){
+    return this.slice(0, prefix.length) === prefix;
+};
 String.prototype.trunc = function(len,suffix) {
     return this.length > len ? this.slice(0, len) + (suffix||'&hellip;') : this;
 };
