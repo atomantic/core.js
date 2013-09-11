@@ -1,5 +1,5 @@
 {
-  "name": "core",
+  "name": "corejs",
   "description": "Core JavaScript Utilities to Make the Web Better",
   "version": "0.1.1",
   "homepage": "https://github.com/atomantic/core.js",
@@ -20,7 +20,7 @@
       "url": "https://github.com/atomantic/core.js/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "lib/core",
+  "main": "bin/corejs",
   "engines": {
     "node": ">= 0.8.0"
   },

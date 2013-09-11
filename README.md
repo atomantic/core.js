@@ -25,10 +25,10 @@ If you want polyfils for ES5, I highly recommend using [the es5-shim](https://gi
 
 ## Getting Started
 ### On the server
-Install the module with: `npm install core`
+Install the module with: `npm install corejs`
 
 ```javascript
-var core = require('core');
+var core = require('corejs');
 
 // "get the english ordinal for a number"
 var num = 345,

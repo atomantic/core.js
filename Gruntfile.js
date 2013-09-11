@@ -19,7 +19,11 @@ module.exports = function(grunt) {
       },
       dist: {
         src: ['src/*.js'],
-        dest: 'dist/<%= pkg.name %>.js'
+        dest: 'dist/core.js'
+      },
+      bin: {
+        src:['src/!(core.jquery).js'],
+        dest: 'bin/<%= pkg.name %>.js'
       }
     },
     uglify: {
