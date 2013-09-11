@@ -1,4 +1,4 @@
-# Core.js - Everything that should be there but isn't
+## Core.js - Missing Utilities for JavaScript
 
 [![Build Status](https://travis-ci.org/atomantic/core.js.png?branch=master)](https://travis-ci.org/atomantic/core.js)
 
@@ -15,8 +15,9 @@ If web standards were implemented as quickly as they should be:
 * our own method to get the ordinal suffix of a number (1 => "st")
 * etc...
 
-That's the kind of BS you'll find here. 
-If you think the web works perfect without all this sugar, this isn't for you. You'll probably eventually write some of this over again yourself and end up polluting the global namespace to have that nice little global helper everywhere. Or you could [custom download](http://atomantic.github.io/core.js) a version of core.js with all those tools contained within a single namespace.
+Most of these utilities are small and in standard use throughout the industry anyway--but you shouldn't have to hunt google, stackoverflow or 140byt.es to find these. And wouldn't you like them to come with [unit tests](https://travis-ci.org/atomantic/core.js), auto-generated [documentation](http://atomantic.github.io/core.js/#docs) and a [custom build](http://atomantic.github.io/core.js) to choose either the whole set or a subset for your project, contained nicely within a single namespace?
+
+Think of core.js like underscore.js, except with a bit more of the presentation layer in mind. If you have underscore.js (or lodash.js) in your project, you probably will use some of these methods too.
 
 Additionally, this library provides a selection of String methods in patient anticipation of the next ecmascript standard, hoping it might have some of these methods: http://wiki.ecmascript.org/doku.php?id=harmony%3astring_extras
 
@@ -82,9 +83,9 @@ You can view the documentation generated via grunt:jsdoc on github: [http://atom
 In lieu of a formal styleguide, take care to maintain the existing coding style.
 Please note that the codebase uses 4 spaces (not 2) instead of tabs--and uses the comma pattern for declaring sets of new variables. 
 Add unit tests for any new or changed functionality. 
-Lint and test your code using [Grunt](http://gruntjs.com/).
+Lint, build and test your code using [Grunt](http://gruntjs.com/).
 
-_Also, please note that only the index.html in the "dist" subdirectory is manually edited for the purpose of DownloadBuilder.js--the rest are generated via Grunt. You'll find source code in the "src" subdirectory!_
+_Also, please note that ONLY the index.html in the "dist" subdirectory is manually edited for the purpose of DownloadBuilder.js--the rest are generated via Grunt. You'll find source code in the "src" subdirectory :)_
 
 ## Release History
 
