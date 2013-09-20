@@ -1,5 +1,7 @@
 ## Core.js - Missing Utilities for JavaScript
 
+# NOTE: this is soon going to be converted into underscore mixins!
+
 [![Build Status](https://travis-ci.org/atomantic/core.js.png?branch=master)](https://travis-ci.org/atomantic/core.js)
 
 ## About
