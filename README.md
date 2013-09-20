@@ -1,5 +1,7 @@
 ## Core.js - Missing Utilities for JavaScript
 
+# NOTE: this is soon going to be converted into underscore mixins!
+
 [![Build Status](https://travis-ci.org/atomantic/core.js.png?branch=master)](https://travis-ci.org/atomantic/core.js)
 
 ## About
@@ -25,10 +27,10 @@ If you want polyfils for ES5, I highly recommend using [the es5-shim](https://gi
 
 ## Getting Started
 ### On the server
-Install the module with: `npm install core`
+Install the module with: `npm install corejs`
 
 ```javascript
-var core = require('core');
+var core = require('corejs');
 
 // "get the english ordinal for a number"
 var num = 345,
