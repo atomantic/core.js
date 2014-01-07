@@ -115,3 +115,7 @@ _Also, please note that ONLY the index.html in the "dist" subdirectory is manual
 ## License
 Copyright (c) 2013 Adam Eivy (@antic)  
 Licensed under the MIT license.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/atomantic/core.js/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
