@@ -1,4 +1,5 @@
 ## Core.js - Missing Utilities for JavaScript
+<<<<<<< Updated upstream
 
 # NOTE: this is soon going to be converted into underscore mixins!
 
@@ -115,3 +116,6 @@ _Also, please note that ONLY the index.html in the "dist" subdirectory is manual
 ## License
 Copyright (c) 2013 Adam Eivy (@antic)  
 Licensed under the MIT license.
+=======
+Deprecated: Use [undermore/mo-dash](https://github.com/atomantic/undermore)
+>>>>>>> Stashed changes
